@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41811D34-BEC5-4774-A6FA-4B3E4A7B9084}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Platformer</RootNamespace>
+    <AssemblyName>Platformer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Art.cs" />
+    <Compile Include="Common\Linkers\AutomaticLinker.cs" />
+    <Compile Include="Common\Linkers\CreationType.cs" />
+    <Compile Include="Common\Linkers\GenericLinker.cs" />
+    <Compile Include="Common\Linkers\ILinkable.cs" />
+    <Compile Include="Common\Randomization\IRandom.cs" />
+    <Compile Include="Common\Randomization\ISeedable.cs" />
+    <Compile Include="Common\Randomization\PerlinNoise.cs" />
+    <Compile Include="Common\Randomization\RandomProxy.cs" />
+    <Compile Include="Common\Randomization\SeedableRandom.cs" />
+    <Compile Include="Common\Singleton.cs" />
+    <Compile Include="Common\ThreadInvoker.cs" />
+    <Compile Include="Components\ComponentManager.cs" />
+    <Compile Include="Components\DebugComponent.cs" />
+    <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Components\IComponentProvider.cs" />
+    <Compile Include="Components\IConstructable.cs" />
+    <Compile Include="Components\IValueProvider.cs" />
+    <Compile Include="Components\ValueProvider.cs" />
+    <Compile Include="Scenes\GameOverScene.cs" />
+    <Compile Include="World\Entities\Animation\AnimatedEntity.cs" />
+    <Compile Include="World\Entities\Animation\EntityAnimation.cs" />
+    <Compile Include="World\Entities\Animation\EntityFrame.cs" />
+    <Compile Include="World\Entities\Background\Cloud.cs" />
+    <Compile Include="World\Entities\Background\CloudSpawner.cs" />
+    <Compile Include="World\Entities\Components\CollidableComponent.cs" />
+    <Compile Include="World\Entities\Components\EntityComponent.cs" />
+    <Compile Include="World\Entities\Components\GoldComponent.cs" />
+    <Compile Include="World\Entities\Components\InventoryComponent.cs" />
+    <Compile Include="World\Entities\Components\LifeComponent.cs" />
+    <Compile Include="World\Entities\Components\Physics\GravityComponent.cs" />
+    <Compile Include="World\Entities\Components\Physics\IForceComponent.cs" />
+    <Compile Include="World\Entities\Components\InputComponent.cs" />
+    <Compile Include="World\Entities\Components\Physics\PhysicsComponent.cs" />
+    <Compile Include="World\Entities\Components\Physics\PhysicsHelper.cs" />
+    <Compile Include="World\Entities\Components\SpawnerComponent.cs" />
+    <Compile Include="World\Entities\Components\TextureComponent.cs" />
+    <Compile Include="World\Entities\Entity.cs" />
+    <Compile Include="World\Entities\EntitySpawner.cs" />
+    <Compile Include="World\Entities\Events\EntityCollisionEvent.cs" />
+    <Compile Include="World\Entities\Events\EntityDiedEvent.cs" />
+    <Compile Include="World\Entities\Events\ICollisionEvent.cs" />
+    <Compile Include="World\Entities\Events\PickupItemEvent.cs" />
+    <Compile Include="World\Entities\Events\TileCollisionEvent.cs" />
+    <Compile Include="World\Entities\Facing.cs" />
+    <Compile Include="World\Entities\Items\BlueKey.cs" />
+    <Compile Include="World\Entities\Items\Coin.cs" />
+    <Compile Include="World\Entities\Items\DestroyedItem.cs" />
+    <Compile Include="World\Entities\Items\Heart.cs" />
+    <Compile Include="World\Entities\Mobs\Mob.cs" />
+    <Compile Include="World\Entities\Mobs\Slime.cs" />
+    <Compile Include="World\Entities\Mobs\SlimeSpawner.cs" />
+    <Compile Include="World\Entities\Player.cs" />
+    <Compile Include="World\Entities\Items\Item.cs" />
+    <Compile Include="World\Entities\Particles\DustParticleGray.cs" />
+    <Compile Include="World\Entities\Particles\DustParticleWhite.cs" />
+    <Compile Include="World\Entities\Particles\DustParticleEmitter.cs" />
+    <Compile Include="World\Entities\Particles\Particle.cs" />
+    <Compile Include="World\Entities\Puzzle\Crate.cs" />
+    <Compile Include="World\Entities\Puzzle\Lock.cs" />
+    <Compile Include="World\Entities\Puzzle\Platform.cs" />
+    <Compile Include="World\Entities\TextEntity.cs" />
+    <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\EventManager.cs" />
+    <Compile Include="Events\IEventSubscriber.cs" />
+    <Compile Include="Events\SubscriberCollection.cs" />
+    <Compile Include="Game\GameLoop.cs" />
+    <Compile Include="Game\IGameHandler.cs" />
+    <Compile Include="Input\KeyboardState.cs" />
+    <Compile Include="Input\KeyListener.cs" />
+    <Compile Include="Input\MouseListener.cs" />
+    <Compile Include="Math\Collision\CollisionManager.cs" />
+    <Compile Include="Math\Collision\Direction.cs" />
+    <Compile Include="Math\Collision\PolygonHelper.cs" />
+    <Compile Include="Math\Collision\CollisionResult.cs" />
+    <Compile Include="Math\Collision\Polygon.cs" />
+    <Compile Include="Shared.cs" />
+    <Compile Include="UI\Fonts\InternalFontUnit.cs" />
+    <Compile Include="UI\Fonts\SpriteFont.cs" />
+    <Compile Include="UI\Fonts\SpriteFontGenerator.cs" />
+    <Compile Include="UI\Fonts\SpriteFontRenderer.cs" />
+    <Compile Include="World\Camera.cs" />
+    <Compile Include="World\Generation\WorldGenerator.cs" />
+    <Compile Include="World\Level.cs" />
+    <Compile Include="World\LevelCollision.cs" />
+    <Compile Include="World\Tiles\AirTile.cs" />
+    <Compile Include="World\Tiles\BlockTile.cs" />
+    <Compile Include="World\Tiles\DirtTile.cs" />
+    <Compile Include="World\Tiles\FenceTile.cs" />
+    <Compile Include="World\Tiles\GrassTile.cs" />
+    <Compile Include="World\Tiles\Locks\BlueLockTile.cs" />
+    <Compile Include="World\Tiles\LockTile.cs" />
+    <Compile Include="World\Tiles\RockTile.cs" />
+    <Compile Include="World\Tiles\StaticTile.cs" />
+    <Compile Include="World\TileEngine\Tile.cs" />
+    <Compile Include="World\TileEngine\TileManager.cs" />
+    <Compile Include="World\TileEngine\TileMap.cs" />
+    <Compile Include="World\TileEngine\TileReference.cs" />
+    <Compile Include="Math\MathHelper.cs" />
+    <Compile Include="Math\Rectangle.cs" />
+    <Compile Include="Math\Vector2.cs" />
+    <Compile Include="Plugins\PluginAttribute.cs" />
+    <Compile Include="Plugins\PluginLoader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="Rendering\IGraphicsProvider.cs" />
+    <Compile Include="Rendering\IRenderManager.cs" />
+    <Compile Include="Rendering\ITexture.cs" />
+    <Compile Include="Rendering\ITextureFactory.cs" />
+    <Compile Include="Rendering\RenderingPipeline.cs" />
+    <Compile Include="Scenes\ISceneManager.cs" />
+    <Compile Include="Scenes\Scene.cs" />
+    <Compile Include="Scenes\SceneManager.cs" />
+    <Compile Include="Scenes\TestScene.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="World\Entities\Obstacles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\font_gameover.font" />
+    <None Include="Resources\font_main.font" />
+    <None Include="Resources\font_shadow.font" />
+    <None Include="Resources\switch_red_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_yellow_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_yellow_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alien_plant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bonus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bonus_used.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bridge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bush.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coin_bronze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coin_gold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coin_silver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fence_broken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fly_dead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fly_fly.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fly_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground_cave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground_dirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground_rock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground_sand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hill_long.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hill_short.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slime_dead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spikes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_blue_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_blue_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_green_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_green_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_red_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\particle_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\particle_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\particle_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\particle_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lava.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lava_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\water.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\water_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ui_box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walk_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walk_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jump_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jump_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slime_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slime_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart_half.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fly_spawner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slime_spawner.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
