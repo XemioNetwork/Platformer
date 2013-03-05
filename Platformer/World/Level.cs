@@ -27,6 +27,7 @@ namespace Platformer.World
             this.Width = width;
             this.Height = height;
 
+            this.RenderText = true;
             this.ClearLevel();
         }
         #endregion
@@ -40,6 +41,13 @@ namespace Platformer.World
         /// Gets the spawn location.
         /// </summary>
         public virtual Vector2 SpawnLocation
+        {
+            get { return Vector2.Zero; }
+        }
+        /// <summary>
+        /// Gets the camera start position.
+        /// </summary>
+        public virtual Vector2 CameraStartPosition
         {
             get { return Vector2.Zero; }
         }
@@ -78,6 +86,10 @@ namespace Platformer.World
         /// Gets the height.
         /// </summary>
         public int Height { get; private set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether to render text entities.
+        /// </summary>
+        public bool RenderText { get; set; }
         #endregion
 
         #region Methods
@@ -151,6 +163,8 @@ namespace Platformer.World
 
                 this.Add(this.Player);
             }
+
+            this.RenderText = true;
         }
         /// <summary>
         /// Handles a game tick.
@@ -190,6 +204,9 @@ namespace Platformer.World
 
                     if (renderQueue.Current.Visible)
                     {
+                        if (renderQueue.Current is TextEntity && !this.RenderText)
+                            continue;
+
                         renderQueue.Current.Render(elapsed);
                     }
                 }

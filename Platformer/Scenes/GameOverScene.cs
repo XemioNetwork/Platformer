@@ -35,10 +35,14 @@ namespace Platformer.Scenes
         public override void Tick(float elapsed)
         {
             KeyListener listener = ComponentManager.Instance.GetComponent<KeyListener>();
-            if (listener.IsKeyDown(Keys.Enter) && this.LastState.IsKeyUp(Keys.Enter))
+
+            if (this.LastState != null)
             {
-                this.SceneManager.Add(new GameMenu());
-                this.SceneManager.Remove(this);
+                if (listener.IsKeyDown(Keys.Enter) && this.LastState.IsKeyUp(Keys.Enter))
+                {
+                    this.SceneManager.Add(new GameMenu());
+                    this.SceneManager.Remove(this);
+                }
             }
 
             this._elapsed += elapsed;

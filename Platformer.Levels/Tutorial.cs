@@ -15,13 +15,13 @@ using Platformer.World.Entities.Mobs;
 
 namespace Platformer.World.Levels
 {
-    public class TestLevel : Level
+    public class Tutorial : Level
     {
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="TestLevel"/> class.
+        /// Initializes a new instance of the <see cref="Tutorial"/> class.
         /// </summary>
-        public TestLevel() : base(60, 10)
+        public Tutorial() : base(60, 10)
         {
         }
         #endregion
@@ -32,14 +32,21 @@ namespace Platformer.World.Levels
         /// </summary>
         public override string Name
         {
-            get { return "TestLevel"; }
+            get { return "01. Tutorial"; }
+        }
+        /// <summary>
+        /// Gets the camera start position.
+        /// </summary>
+        public override Vector2 CameraStartPosition
+        {
+            get { return new Vector2(400, 240); }
         }
         /// <summary>
         /// Gets the preview location.
         /// </summary>
         public override Vector2 PreviewLocation
         {
-            get { return new Vector2(400, 240); }
+            get { return new Vector2(600, 240); }
         }
         #endregion
 

@@ -43,8 +43,6 @@ namespace Platformer.Scenes
         private int _selectedIndex = 0;
         private int _scrollIndex = 0;
 
-        private int _tickCount = 0;
-
         private List<Level> _levels;
         #endregion
 
@@ -66,14 +64,6 @@ namespace Platformer.Scenes
             {
                 MenuItem item = new MenuItem();
                 item.Text = level.Name;
-
-                item.OnTrigger = () =>
-                {
-                    PlatformerGame game = new PlatformerGame(level);
-
-                    this.SceneManager.Add(game);
-                    this.SceneManager.Remove(this);
-                };
 
                 this._items.Add(item);
                 this._levels.Add(level);
@@ -99,6 +89,9 @@ namespace Platformer.Scenes
                 this._level = this._levels[this._selectedIndex];
                 this._level.Start(false);
 
+                this._level.RenderText = false;
+
+                this._level.Camera.Offset = this._level.CameraStartPosition;
                 this._level.Camera.Position = this._level.PreviewLocation;
             }
 
@@ -121,9 +114,16 @@ namespace Platformer.Scenes
 
             for (int i = 0; i < this._items.Count; i++)
             {
-                if (i == this._selectedIndex && keyboard.IsKeyDown(Keys.Enter))
+                if (this._lastState == null) break;
+
+                if (i == this._selectedIndex && 
+                    keyboard.State.IsKeyDown(Keys.Enter) && 
+                    this._lastState.IsKeyUp(Keys.Enter))
                 {
-                    this._items[i].Trigger();
+                    PlatformerGame game = new PlatformerGame(this._levels[i]);
+
+                    this.SceneManager.Add(game);
+                    this.SceneManager.Remove(this);                    
                 }
             }
 

@@ -58,10 +58,6 @@ namespace Platformer.World.Entities
             this._levelCamera = this.Level.Camera;
             this._levelCamera.Unfocus();
 
-            this._levelCamera.Speed = 0.1f;
-            this._levelCamera.Position = new Vector2(
-                this._levelCamera.Position.X, -Shared.ScreenHeight * 0.5f);
-
             base.Destroy();
         }
         /// <summary>
