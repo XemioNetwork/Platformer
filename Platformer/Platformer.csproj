@@ -64,7 +64,11 @@
     <Compile Include="Components\IConstructable.cs" />
     <Compile Include="Components\IValueProvider.cs" />
     <Compile Include="Components\ValueProvider.cs" />
+    <Compile Include="Plugins\IArtExtender.cs" />
+    <Compile Include="Scenes\GameMenu.cs" />
     <Compile Include="Scenes\GameOverScene.cs" />
+    <Compile Include="Scenes\Menu\MenuItem.cs" />
+    <Compile Include="Scenes\Menu\MenuLevel.cs" />
     <Compile Include="World\Entities\Animation\AnimatedEntity.cs" />
     <Compile Include="World\Entities\Animation\EntityAnimation.cs" />
     <Compile Include="World\Entities\Animation\EntityFrame.cs" />
@@ -93,7 +97,10 @@
     <Compile Include="World\Entities\Items\BlueKey.cs" />
     <Compile Include="World\Entities\Items\Coin.cs" />
     <Compile Include="World\Entities\Items\DestroyedItem.cs" />
+    <Compile Include="World\Entities\Items\GreenKey.cs" />
     <Compile Include="World\Entities\Items\Heart.cs" />
+    <Compile Include="World\Entities\Items\RedKey.cs" />
+    <Compile Include="World\Entities\Items\YellowKey.cs" />
     <Compile Include="World\Entities\Mobs\Mob.cs" />
     <Compile Include="World\Entities\Mobs\Slime.cs" />
     <Compile Include="World\Entities\Mobs\SlimeSpawner.cs" />
@@ -136,6 +143,9 @@
     <Compile Include="World\Tiles\FenceTile.cs" />
     <Compile Include="World\Tiles\GrassTile.cs" />
     <Compile Include="World\Tiles\Locks\BlueLockTile.cs" />
+    <Compile Include="World\Tiles\Locks\GreenLockTile.cs" />
+    <Compile Include="World\Tiles\Locks\RedLockTile.cs" />
+    <Compile Include="World\Tiles\Locks\YellowLockTile.cs" />
     <Compile Include="World\Tiles\LockTile.cs" />
     <Compile Include="World\Tiles\RockTile.cs" />
     <Compile Include="World\Tiles\StaticTile.cs" />
@@ -159,7 +169,7 @@
     <Compile Include="Scenes\ISceneManager.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
-    <Compile Include="Scenes\TestScene.cs" />
+    <Compile Include="Scenes\PlatformerGame.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -398,6 +408,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\slime_spawner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,6 +23,7 @@ namespace Platformer.World.Entities
         {
             this.Components = new List<EntityComponent>();
             this.LayerIndex = 1;
+            this.Visible = true;
         }
         #endregion
 
@@ -62,6 +63,10 @@ namespace Platformer.World.Entities
         /// Gets or sets the level.
         /// </summary>
         public Level Level { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="Entity"/> is visible.
+        /// </summary>
+        public bool Visible { get; set; }
         /// <summary>
         /// Gets the offset.
         /// </summary>

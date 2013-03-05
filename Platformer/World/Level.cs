@@ -44,6 +44,13 @@ namespace Platformer.World
             get { return Vector2.Zero; }
         }
         /// <summary>
+        /// Gets the preview location.
+        /// </summary>
+        public virtual Vector2 PreviewLocation
+        {
+            get { return Vector2.Zero; }
+        }
+        /// <summary>
         /// Gets the collision.
         /// </summary>
         public LevelCollision Collision { get; private set; }
@@ -124,15 +131,26 @@ namespace Platformer.World
         /// </summary>
         public void Start()
         {
+            this.Start(true);
+        }
+        /// <summary>
+        /// Starts this level.
+        /// </summary>
+        /// <param name="createPlayer">if set to <c>true</c> create player.</param>
+        public void Start(bool createPlayer)
+        {
             this.ResetLevel();
-
             this.Camera = new Camera();
-            this.Player = new Player();
 
-            this.Camera.Focus(this.Player);
-            this.Player.Position = this.SpawnLocation;
+            if (createPlayer)
+            {
+                this.Player = new Player();
 
-            this.Add(this.Player);
+                this.Camera.Focus(this.Player);
+                this.Player.Position = this.SpawnLocation;
+
+                this.Add(this.Player);
+            }
         }
         /// <summary>
         /// Handles a game tick.
@@ -157,6 +175,11 @@ namespace Platformer.World
             IEnumerator<Entity> renderQueue = this.Entities
                 .OrderBy(entity => entity.LayerIndex)
                 .GetEnumerator();
+
+            IRenderManager renderManager = ComponentManager.Instance.GetComponent<IRenderManager>();
+            Vector2 center = new Vector2(Shared.ScreenWidth * 0.5f, Shared.ScreenHeight * 0.5f);
+
+            renderManager.Offset(-this.Camera.Offset + center);
             
             for (int i = 0; i < this.TileLayer.Length; i++)
             {
@@ -165,7 +188,10 @@ namespace Platformer.World
                     if (!renderQueue.MoveNext()) 
                         break;
 
-                    renderQueue.Current.Render(elapsed);
+                    if (renderQueue.Current.Visible)
+                    {
+                        renderQueue.Current.Render(elapsed);
+                    }
                 }
 
                 this.TileLayer[i].Render(elapsed);

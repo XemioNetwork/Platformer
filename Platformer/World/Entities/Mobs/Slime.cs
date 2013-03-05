@@ -59,7 +59,7 @@ namespace Platformer.World.Entities.Mobs
         /// </summary>
         public override float JumpAcceleration
         {
-            get { return 1f; }
+            get { return 1.5f; }
         }
         /// <summary>
         /// Gets the jump strength.

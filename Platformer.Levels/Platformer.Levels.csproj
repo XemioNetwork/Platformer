@@ -51,7 +51,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "C:\Users\Chris\Documents\Visual Studio 2010\Projects\Platformer\Platformer.Levels\bin\Debug\Platformer.Levels.dll" "C:\Users\Chris\Documents\Visual Studio 2010\Projects\Platformer\Platformer\bin\Debug\levels\Platformer.Levels.dll"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "$(ProjectDir)..\Platformer\bin\Debug\levels\Platformer.Levels.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

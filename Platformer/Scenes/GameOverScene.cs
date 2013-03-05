@@ -37,7 +37,7 @@ namespace Platformer.Scenes
             KeyListener listener = ComponentManager.Instance.GetComponent<KeyListener>();
             if (listener.IsKeyDown(Keys.Enter) && this.LastState.IsKeyUp(Keys.Enter))
             {
-                this.SceneManager.Add(new TestScene());
+                this.SceneManager.Add(new GameMenu());
                 this.SceneManager.Remove(this);
             }
 
@@ -47,7 +47,8 @@ namespace Platformer.Scenes
             {
                 if (this._gameOverIndex < "GAME OVER".Length)
                     this._gameOverIndex++;
-                if (this._pressEnterIndex < "Press Enter to respawn".Length)
+
+                if (this._pressEnterIndex < "Press Enter to continue".Length)
                     this._pressEnterIndex += 2;
 
                 this._elapsed -= 20;
@@ -65,7 +66,7 @@ namespace Platformer.Scenes
             this.RenderManager.Clear(new Color(208, 244, 247));
 
             string gameOver = "GAME OVER";
-            string pressEnter = "Press Enter to respawn";
+            string pressEnter = "Press Enter to continue";
 
             Vector2 fontSize = Art.FontGameOver.MeasureString(gameOver);
             Vector2 fontSizeB = Art.FontBlack.MeasureString(pressEnter);

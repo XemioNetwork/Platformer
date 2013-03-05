@@ -116,6 +116,13 @@ namespace Platformer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap clear {
+            get {
+                object obj = ResourceManager.GetObject("clear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap cloud_1 {
             get {
                 object obj = ResourceManager.GetObject("cloud_1", resourceCulture);

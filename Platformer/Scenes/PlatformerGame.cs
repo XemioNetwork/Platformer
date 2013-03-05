@@ -24,12 +24,16 @@ using Platformer.Plugins;
 
 namespace Platformer.Scenes
 {
-    public class TestScene : Scene
+    public class PlatformerGame : Scene
     {
         #region Constructors
-        public TestScene()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PlatformerGame"/> class.
+        /// </summary>
+        /// <param name="level">The level.</param>
+        public PlatformerGame(Level level)
         {
-
+            this._level = level;
         }
         #endregion
 
@@ -46,9 +50,8 @@ namespace Platformer.Scenes
         /// </summary>
         private void GameOver()
         {
-            SceneManager sceneManager = ComponentManager.Instance.GetComponent<SceneManager>();
-            sceneManager.RemoveCurrent();
-            sceneManager.Add(new GameOverScene());
+            this.SceneManager.Remove(this);
+            this.SceneManager.Add(new GameOverScene());
         }
         /// <summary>
         /// Loads the scene content.
@@ -58,10 +61,6 @@ namespace Platformer.Scenes
             this._font = SpriteFont.Load("font_main", Properties.Resources.ResourceManager);
             this._shadowFont = SpriteFont.Load("font_shadow", Properties.Resources.ResourceManager);
             
-            PluginLoader<Level> levelLoader = new PluginLoader<Level>();
-            levelLoader.LoadPlugins("levels");
-
-            this._level = levelLoader.Plugins.FirstOrDefault();
             this._level.Start();
         }
         /// <summary>

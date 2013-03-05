@@ -34,6 +34,13 @@ namespace Platformer.World.Levels
         {
             get { return "TestLevel"; }
         }
+        /// <summary>
+        /// Gets the preview location.
+        /// </summary>
+        public override Vector2 PreviewLocation
+        {
+            get { return new Vector2(400, 240); }
+        }
         #endregion
 
         #region Methods
@@ -54,12 +61,6 @@ namespace Platformer.World.Levels
                     {
                         this.TileLayer[1].SetTile<DirtTile>(x, y);
                     }
-                }
-
-                if (x == 3)
-                {
-                    this.TileLayer[1].SetTile<DirtTile>(x, 4);
-                    this.TileLayer[1].SetTile<DirtTile>(x, 3);
                 }
 
                 if (x == 6)
@@ -92,8 +93,6 @@ namespace Platformer.World.Levels
                 Direction = new Vector2(0, 1),
                 Distance = 200
             });
-
-            this.Add(new SlimeSpawner { Position = new Vector2(70 * 20, 280) });
         }
         #endregion
     }

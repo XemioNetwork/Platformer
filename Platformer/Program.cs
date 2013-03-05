@@ -10,6 +10,7 @@ using System.Reflection;
 using Platformer.Rendering;
 using Platformer.Events;
 using Platformer.Input;
+using Platformer.Plugins;
 
 namespace Platformer
 {
@@ -23,11 +24,20 @@ namespace Platformer
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Text = "Platformer";
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.MaximizeBox = false;
             
             Shared.Handle = form.Handle;
 
             RenderingPipeline.Setup("Platformer.GDIPlus.dll", form.Handle);
             Program.SetupGame(form.Handle);
+
+            PluginLoader<IArtExtender> artLoader = new PluginLoader<IArtExtender>();
+            artLoader.LoadPlugins();
+
+            foreach (IArtExtender extender in artLoader.Plugins)
+            {
+                extender.LoadContent();
+            }
 
             Application.Run(form);
         }
@@ -35,7 +45,6 @@ namespace Platformer
         static void SetupGame(IntPtr handle)
         {            
             SceneManager sceneManager = new SceneManager();
-            sceneManager.Add(new GameOverScene());
 
             ComponentManager.Instance.Add(new GameLoop());
             ComponentManager.Instance.Add(new EventManager());
@@ -50,6 +59,8 @@ namespace Platformer
             ComponentManager.Instance.Finalize();
 
             Art.LoadContent(ComponentManager.Instance.GetComponent<ITextureFactory>());
+            sceneManager.Add(new GameMenu());
+
             Program.SetupLoop();
         }
 

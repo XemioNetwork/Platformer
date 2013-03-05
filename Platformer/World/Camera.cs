@@ -36,7 +36,7 @@ namespace Platformer.World
         /// <summary>
         /// Gets the camera offset.
         /// </summary>
-        public Vector2 Offset { get; private set; }
+        public Vector2 Offset { get; set; }
         /// <summary>
         /// Gets or sets the position.
         /// </summary>

@@ -34,14 +34,47 @@ namespace Platformer
         /// </summary>
         public static int ScreenWidth
         {
-            get { return Control.FromHandle(Shared.Handle).ClientSize.Width; }
+            get { return Shared.GetSurface().ClientSize.Width; }
         }
         /// <summary>
         /// Gets or sets the height of the screen.
         /// </summary>
         public static int ScreenHeight
         {
-            get { return Control.FromHandle(Shared.Handle).ClientSize.Height; }
+            get { return Shared.GetSurface().ClientSize.Height; }
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// The placeholder control.
+        /// </summary>
+        private static Control _placeholder;
+        /// <summary>
+        /// Gets the placeholder.
+        /// </summary>
+        private static Control GetPlaceholder()
+        {
+            if (_placeholder == null)
+            {
+                _placeholder = new Control();
+                _placeholder.CreateControl();
+            }
+
+            return _placeholder;
+        }
+        /// <summary>
+        /// Gets the surface.
+        /// </summary>
+        public static Control GetSurface()
+        {
+            Control control = Control.FromHandle(Shared.Handle);
+            if (control == null)
+            {
+                control = Shared.GetPlaceholder();
+            }
+
+            return control;
         }
         #endregion
     }

@@ -178,6 +178,10 @@ namespace Platformer
         /// Gets the texture for "red.png".
         /// </summary>
         public static ITexture Rectangle { get; private set; }
+        /// <summary>
+        /// Gets the texture for "clear.png".
+        /// </summary>
+        public static ITexture Clear { get; private set; }
         #endregion
 
         #region Fonts
@@ -336,6 +340,7 @@ namespace Platformer
             Art.HeartEmpty = LoadTexture("heart_empty");
 
             Art.Rectangle = LoadTexture("red");
+            Art.Clear = LoadTexture("clear");
 
             Art.FontBlack = LoadFont("font_main");
             Art.FontWhite = LoadFont("font_shadow");
